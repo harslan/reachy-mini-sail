@@ -611,6 +611,117 @@
             background: #667eea;
             color: white;
         }
+
+        .community-ideas {
+            margin: 50px 0;
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .idea-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .idea-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .idea-card .idea-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .idea-card .idea-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .idea-card .idea-role {
+            color: #764ba2;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .idea-card .idea-department {
+            color: #888;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        .idea-card .idea-text {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .idea-card .idea-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .ideas-empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f8f9ff;
+            border-radius: 15px;
+            border: 2px dashed #667eea;
+        }
+
+        .ideas-empty-state p {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 15px;
+        }
+
+        .refresh-ideas {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .refresh-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .refresh-button:hover {
+            background: #667eea;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -906,6 +1017,53 @@
                 </div>
             </div>
 
+            <div class="section community-ideas">
+                <h2 class="section-title">💭 Community Ideas</h2>
+                <p class="intro-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
+                    See what others are thinking! These ideas from the Suffolk community are sparking conversations and inspiring new possibilities. <strong>Your idea could be next!</strong>
+                </p>
+                
+                <div id="ideasContainer" class="ideas-grid">
+                    <!-- Ideas will be populated here -->
+                    <!-- See COMMUNITY_IDEAS_SETUP.md for instructions on how to add ideas -->
+                    <!-- 
+                    To add ideas, use this template:
+                    
+                    <div class="idea-card">
+                        <div class="idea-header">
+                            <span class="idea-badge">💡 New Idea</span>
+                            <span class="idea-role">Student</span>
+                        </div>
+                        <div class="idea-department">Marketing</div>
+                        <div class="idea-text">
+                            Your idea text goes here...
+                        </div>
+                        <div class="idea-footer">
+                            <span>Submitted recently</span>
+                        </div>
+                    </div>
+                    -->
+                    
+                    <!-- Remove this empty state once you add real ideas -->
+                    <div class="ideas-empty-state" style="grid-column: 1 / -1;">
+                        <div style="font-size: 3em; margin-bottom: 15px;">💭</div>
+                        <h3 style="color: #667eea; margin-bottom: 10px;">Be the First to Share Your Idea!</h3>
+                        <p>Once community members start submitting ideas, they'll appear here to inspire others.</p>
+                        <p style="margin-top: 20px;">
+                            <a href="#" class="google-form-link" id="googleFormLink2" style="display: inline-block; margin-top: 10px;">
+                                📝 Submit Your Idea Now →
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="refresh-ideas">
+                    <p style="color: #666; margin-bottom: 10px; font-size: 0.95em;">
+                        Ideas are updated regularly. Check back often to see new submissions!
+                    </p>
+                </div>
+            </div>
+
             <div class="section">
                 <h2 class="section-title">Why Suffolk? Why Now?</h2>
                 <div class="intro-text">
@@ -955,11 +1113,11 @@
             */
         });
 
-        // Google Forms link - Update this URL when you create your Google Form
-        document.getElementById('googleFormLink').addEventListener('click', function(e) {
+        // Google Forms link handler - Update this URL when you create your Google Form
+        function handleGoogleFormClick(e, formUrl) {
             // TODO: Replace with your actual Google Form URL
             // Get this URL after creating your form at forms.google.com
-            const googleFormUrl = 'https://forms.gle/YOUR_FORM_ID_HERE';
+            const googleFormUrl = formUrl || 'https://forms.gle/YOUR_FORM_ID_HERE';
             
             if (googleFormUrl.includes('YOUR_FORM_ID')) {
                 e.preventDefault();
@@ -967,7 +1125,19 @@
             } else {
                 window.open(googleFormUrl, '_blank');
             }
+        }
+
+        // Attach to both form links
+        document.getElementById('googleFormLink').addEventListener('click', function(e) {
+            handleGoogleFormClick(e);
         });
+
+        const googleFormLink2 = document.getElementById('googleFormLink2');
+        if (googleFormLink2) {
+            googleFormLink2.addEventListener('click', function(e) {
+                handleGoogleFormClick(e);
+            });
+        }
     </script>
 </body>
 </html>
