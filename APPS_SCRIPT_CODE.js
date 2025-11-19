@@ -17,7 +17,15 @@ function doGet(e) {
 function doPost(e) {
   try {
     // Parse the JSON data from the form
-    const data = JSON.parse(e.postData.contents);
+    let data;
+    if (e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else if (e.parameter && e.parameter.data) {
+      data = JSON.parse(e.parameter.data);
+    } else {
+      // Try to get data from postData directly
+      data = e.postData || e.parameter || {};
+    }
     
     // Get the active spreadsheet
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -34,12 +42,17 @@ function doPost(e) {
       data.involvement || ''
     ]);
     
-    // Return success response
+    // Return success response with CORS headers
     return ContentService.createTextOutput(
       JSON.stringify({success: true, message: 'Data saved successfully'})
     ).setMimeType(ContentService.MimeType.JSON);
     
   } catch (error) {
+    // Log error for debugging
+    Logger.log('Error: ' + error.toString());
+    Logger.log('PostData: ' + JSON.stringify(e.postData));
+    Logger.log('Parameters: ' + JSON.stringify(e.parameter));
+    
     // Return error response
     return ContentService.createTextOutput(
       JSON.stringify({success: false, error: error.toString()})
