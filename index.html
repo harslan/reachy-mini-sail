@@ -1161,13 +1161,8 @@
             };
             
             try {
-                // TODO: Replace with your Google Apps Script Web App URL
-                // See GOOGLE_SHEETS_SETUP.md for instructions
-                const scriptUrl = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
-                
-                if (scriptUrl.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
-                    throw new Error('Google Apps Script URL not configured. Please see GOOGLE_SHEETS_SETUP.md');
-                }
+                // Google Apps Script Web App URL
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyyhaXJpoaYcKZe6iUOCfnfezqiFpWCBAvlWhn_pZj4tRGPttiRb69RSyTzMeYKAwFe/exec';
                 
                 // Submit to Google Apps Script
                 const response = await fetch(scriptUrl, {

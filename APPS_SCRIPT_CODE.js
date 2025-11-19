@@ -1,6 +1,19 @@
 // Google Apps Script Code for Reachy-mini Form Handler
 // Copy this entire code into your Google Apps Script editor
 
+// This function handles GET requests (for testing/verification)
+function doGet(e) {
+  return ContentService.createTextOutput(
+    JSON.stringify({
+      success: true,
+      message: 'Reachy-mini Form Handler is working!',
+      status: 'Ready to receive form submissions',
+      method: 'Use POST to submit form data'
+    })
+  ).setMimeType(ContentService.MimeType.JSON);
+}
+
+// This function handles POST requests (form submissions)
 function doPost(e) {
   try {
     // Parse the JSON data from the form
