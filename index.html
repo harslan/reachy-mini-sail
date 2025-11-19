@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reachy-mini humanoid robot arrives at Suffolk University's Sawyer Business School in December 2025. Explore how this innovative technology transforms business education through the SAIL framework: Social Intelligence, AI Literacy, Innovation, and Leadership.">
+    <title>Meet Reachy-mini: Suffolk SAIL's New Innovation Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🤖';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            top: -40px;
+            right: -40px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .subtitle {
+            font-size: 1.4em;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .hero .date-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            margin-top: 25px;
+            font-size: 1.1em;
+            backdrop-filter: blur(10px);
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: #764ba2;
+        }
+
+        .intro-text {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+        }
+
+        .sail-framework {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .sail-pillar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sail-pillar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .sail-pillar h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sail-pillar .icon {
+            font-size: 1.8em;
+        }
+
+        .sail-pillar p {
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .opportunities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .opportunity-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .opportunity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .opportunity-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .opportunity-card h3 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .opportunity-card .emoji {
+            font-size: 1.5em;
+        }
+
+        .opportunity-card .description {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .opportunity-card .use-cases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .opportunity-card .use-cases li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+        }
+
+        .opportunity-card .use-cases li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #667eea;
+            position: relative;
+        }
+
+        .timeline-content h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .date {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #f0f0f0;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .spec-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .spec-item:hover {
+            transform: scale(1.05);
+        }
+
+        .spec-item .spec-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .spec-item .spec-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .spec-item .spec-value {
+            color: #666;
+        }
+
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .footer .contact-info {
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .opportunities {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #e17055;
+        }
+
+        .highlight-box h3 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .highlight-box p {
+            color: #2d3436;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🤖 Meet Reachy-mini</h1>
+            <div class="subtitle">
+                Suffolk SAIL's New Innovation Partner:<br>
+                Where Humanoid Robotics Meets Business Education
+            </div>
+            <div class="date-badge">🚀 Arriving December 2025</div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="intro-text">
+                    Imagine walking into your classroom and being greeted by a friendly humanoid robot. Not science fiction—this is happening at Suffolk's Sawyer Business School. Reachy-mini represents more than cutting-edge technology; it's a bridge between AI concepts and tangible reality, a catalyst for student imagination, and a powerful demonstration of where business meets innovation.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Why This Matters for Business Education</h2>
+                <div class="intro-text">
+                    Students learn about AI through screens and datasets. But what happens when AI has arms, eyes, and moves through physical space? Everything changes. Abstract concepts become concrete. Ethics discussions gain urgency. Innovation becomes tangible. This is learning that students will remember forever.
+                </div>
+
+                <div class="highlight-box">
+                    <h3>🎯 The SAIL Connection</h3>
+                    <p>Reachy-mini isn't just a robot—it's a living embodiment of the SAIL framework. It demonstrates Social Intelligence through human-robot interaction, builds AI Literacy through hands-on programming, sparks Innovation through creative applications, and develops Leadership by putting students in charge of defining how humans and robots collaborate.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">SAIL Framework in Action</h2>
+                <div class="sail-framework">
+                    <div class="sail-pillar">
+                        <h3><span class="icon">🤝</span> Social Intelligence</h3>
+                        <p>Students explore human-robot interaction, designing interfaces that feel natural, studying how presence changes communication, and understanding the social dimensions of automation in business contexts.</p>
+                    </div>
+                    <div class="sail-pillar">
+                        <h3><span class="icon">🧠</span> AI Literacy</h3>
+                        <p>From computer vision to natural language processing, students see AI algorithms controlling real-world actions. Machine learning isn't abstract anymore—it's the robot responding to their commands.</p>
+                    </div>
+                    <div class="sail-pillar">
+                        <h3><span class="icon">💡</span> Innovation</h3>
+                        <p>Open-source platform + creative minds = limitless possibilities. Students build custom applications using industry-standard tools (Hugging Face Hub), creating portfolio-worthy projects that showcase their innovation capabilities.</p>
+                    </div>
+                    <div class="sail-pillar">
+                        <h3><span class="icon">🎯</span> Leadership</h3>
+                        <p>Students don't just use technology—they shape it. They make decisions about robot behavior, design ethical guidelines for automation, and present their vision for human-robot collaboration to industry partners.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">What Students Will Create</h2>
+                <div class="opportunities">
+                    <div class="opportunity-card">
+                        <h3><span class="emoji">📊</span> Business Analytics Visualizer</h3>
+                        <div class="description">
+                            Reachy-mini physically demonstrates data patterns, points to dashboard insights during presentations, and helps explain complex analytics concepts through gesture and movement.
+                        </div>
+                        <ul class="use-cases">
+                            <li>Interactive teaching assistant for ISOM 835</li>
+                            <li>Physical demonstration of gradient descent</li>
+                            <li>Live data presentation partner</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h3><span class="emoji">🎓</span> Campus AI Ambassador</h3>
+                        <div class="description">
+                            Program Reachy-mini to welcome prospective students, answer questions about Suffolk's AI initiatives, and demonstrate the innovative culture of Sawyer Business School.
+                        </div>
+                        <ul class="use-cases">
+                            <li>Recruitment event demonstrations</li>
+                            <li>Campus tour guide for AI facilities</li>
+                            <li>Open house interactive experiences</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h3><span class="emoji">💼</span> Industry Collaboration Demos</h3>
+                        <div class="description">
+                            Use Reachy-mini to showcase student capabilities to Industry Advisory Council members and potential employers, demonstrating how Suffolk graduates work at the intersection of business and technology.
+                        </div>
+                        <ul class="use-cases">
+                            <li>Live capstone project presentations</li>
+                            <li>BEAM project demonstrations</li>
+                            <li>Corporate partnership showcases</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h3><span class="emoji">🔬</span> Research Innovation Lab</h3>
+                        <div class="description">
+                            Students conduct original research on human-robot interaction in business settings, studying trust, productivity, and the future of work with embodied AI.
+                        </div>
+                        <ul class="use-cases">
+                            <li>Customer service interaction studies</li>
+                            <li>Team collaboration experiments</li>
+                            <li>Publishable research opportunities</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h3><span class="emoji">🎯</span> AI Ethics Laboratory</h3>
+                        <div class="description">
+                            Move beyond theoretical discussions. Students make real decisions about robot behavior, transparency, and the responsibilities that come with deploying AI in physical form.
+                        </div>
+                        <ul class="use-cases">
+                            <li>Robot behavior guidelines development</li>
+                            <li>Transparency in AI decision-making</li>
+                            <li>Accessibility and inclusive design</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h3><span class="emoji">🚀</span> Cross-Functional Projects</h3>
+                        <div class="description">
+                            Marketing students brand robot personality. Management students design human-robot workflows. Finance students explore automation ROI. Real interdisciplinary collaboration.
+                        </div>
+                        <ul class="use-cases">
+                            <li>Marketing: Robot brand personality</li>
+                            <li>Management: Workflow optimization</li>
+                            <li>Finance: Automation investment analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Implementation Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">📦 December 2025</div>
+                            <h4>Arrival & Setup</h4>
+                            <p>Reachy-mini arrives at Suffolk. Initial setup, testing, and faculty familiarization sessions.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">🎓 January 2026</div>
+                            <h4>Spring Semester Launch</h4>
+                            <p>Integration into ISOM courses, initial student projects, and demo sessions for Sawyer community.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">💡 February 2026</div>
+                            <h4>Student Innovation Challenge</h4>
+                            <p>Launch Reachy-mini application competition. Students across disciplines compete to create most innovative use case.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">🤝 March 2026</div>
+                            <h4>Industry Showcase</h4>
+                            <p>Present student projects to Industry Advisory Council. Demonstrate Suffolk's leadership in AI-enhanced business education.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="date">🚀 April 2026</div>
+                            <h4>Scaling & Research</h4>
+                            <p>Launch research studies, expand to additional courses, and begin documentation of best practices for publication.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Technical Capabilities</h2>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <div class="spec-icon">🎤</div>
+                        <div class="spec-label">Voice Interaction</div>
+                        <div class="spec-value">Natural conversation capability</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">👁️</div>
+                        <div class="spec-label">Computer Vision</div>
+                        <div class="spec-value">Object recognition & tracking</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">🤲</div>
+                        <div class="spec-label">Manipulation</div>
+                        <div class="spec-value">Two functional arms</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">🔊</div>
+                        <div class="spec-label">Audio Output</div>
+                        <div class="spec-value">Text-to-speech synthesis</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">💻</div>
+                        <div class="spec-label">Open Platform</div>
+                        <div class="spec-value">Hugging Face integration</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">🎨</div>
+                        <div class="spec-label">Customizable</div>
+                        <div class="spec-value">Student-developed apps</div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>🛠️ Built on Industry-Standard Tools</h3>
+                    <p>Students work with the same platforms used by professional AI researchers: Hugging Face Hub for model deployment, Python for programming, ROS for robotics control. These aren't toy technologies—they're career-building skills.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">What Industry Partners Will See</h2>
+                <div class="intro-text">
+                    When companies engage with Suffolk students, they'll witness graduates who don't just talk about AI—they've programmed robots, designed human-machine interfaces, and grappled with real ethical decisions about automation. This is the competitive advantage employers are seeking.
+                </div>
+
+                <div class="opportunities" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="opportunity-card">
+                        <h3>🎯 Portfolio-Ready Projects</h3>
+                        <div class="description">Students showcase deployed applications running on physical hardware—not just theoretical papers or simulated environments.</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <h3>🤝 Collaboration Experience</h3>
+                        <div class="description">Cross-functional teams working on complex problems that mirror real workplace dynamics and challenges.</div>
+                    </div>
+                    <div class="opportunity-card">
+                        <h3>🧠 Critical Thinking</h3>
+                        <div class="description">Students who've made hard decisions about robot autonomy, privacy, accessibility, and human oversight demonstrate mature judgment.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Ready to Shape the Future?</h2>
+                <p>Whether you're a faculty member curious about integration, a student eager to build something amazing, or an industry partner interested in collaboration—there's a place for you in this initiative.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:harslan@suffolk.edu,Dmitri.Tcherevik@suffolk.edu,Aykut.Firat@suffolk.edu" class="cta-button">Get Involved</a>
+                    <a href="#" class="cta-button secondary">Learn More About SAIL</a>
+                    <a href="#" class="cta-button secondary">See Student Projects</a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Why Suffolk? Why Now?</h2>
+                <div class="intro-text">
+                    Business schools traditionally teach students to manage technology developed by others. Suffolk is different. We're preparing students to be co-creators of the AI-augmented workplace. Reachy-mini isn't just a teaching tool—it's a statement about who we are and where business education is heading.
+                </div>
+                
+                <div class="highlight-box" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <h3>🌟 The Suffolk Difference</h3>
+                    <p>While other schools talk about AI literacy, we're putting robots in students' hands. While others debate the future of work, our students are programming it. While others theorize about human-robot collaboration, Suffolk students are living it. This is education that prepares students not just for the jobs of today, but for the challenges we can't yet imagine.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Questions? Ideas? Let's Talk.</h2>
+                <div class="intro-text">
+                    This is a community initiative. The most exciting applications will come from conversations we haven't had yet, from connections we haven't made, from ideas that spark when different perspectives collide. Reach out, get involved, and help define how humanoid robotics transforms business education at Suffolk.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>SAIL Collaborative</h3>
+            <p>Social Intelligence | AI Literacy | Innovation | Leadership</p>
+            <div class="contact-info">
+                <p><strong>Contact Us</strong></p>
+                <p>Suffolk University Sawyer Business School</p>
+                <p>📧 harslan@suffolk.edu | Dmitri.Tcherevik@suffolk.edu | Aykut.Firat@suffolk.edu</p>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.7;">
+                © 2025 Suffolk University SAIL Collaborative. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
