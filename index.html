@@ -722,6 +722,78 @@
             background: #667eea;
             color: white;
         }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-bottom: 3px solid #667eea;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 15px 40px;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-menu a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Add scroll offset for fixed nav */
+        .section {
+            scroll-margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                padding: 12px 20px;
+            }
+
+            .nav-menu ul {
+                gap: 8px 12px;
+            }
+
+            .nav-menu a {
+                font-size: 0.85em;
+                padding: 6px 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -735,14 +807,26 @@
             <div class="date-badge">🚀 Arriving December 2025</div>
         </div>
 
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#sail-framework">SAIL Framework</a></li>
+                <li><a href="#opportunities">Opportunities</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#capabilities">Capabilities</a></li>
+                <li><a href="#community-ideas">Community Ideas</a></li>
+                <li><a href="#submit-idea">Submit Idea</a></li>
+            </ul>
+        </nav>
+
         <div class="content">
-            <div class="section">
+            <div class="section" id="overview">
                 <div class="intro-text">
                     Imagine walking into your classroom and being greeted by a friendly humanoid robot. Not science fiction—this is happening at Suffolk's Sawyer Business School. Reachy-mini represents more than cutting-edge technology; it's a bridge between AI concepts and tangible reality, a catalyst for student imagination, and a powerful demonstration of where business meets innovation.
                 </div>
             </div>
 
-            <div class="section">
+            <div class="section" id="why-matters">
                 <h2 class="section-title">Why This Matters for Business Education</h2>
                 <div class="intro-text">
                     Students learn about AI through screens and datasets. But what happens when AI has arms, eyes, and moves through physical space? Everything changes. Abstract concepts become concrete. Ethics discussions gain urgency. Innovation becomes tangible. This is learning that students will remember forever.
@@ -754,7 +838,7 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div class="section" id="sail-framework">
                 <h2 class="section-title">SAIL Framework in Action</h2>
                 <div class="sail-framework">
                     <div class="sail-pillar">
@@ -776,7 +860,7 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div class="section" id="opportunities">
                 <h2 class="section-title">What Students Will Create</h2>
                 <div class="opportunities">
                     <div class="opportunity-card">
@@ -853,7 +937,7 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div class="section" id="timeline">
                 <h2 class="section-title">Implementation Timeline</h2>
                 <div class="timeline">
                     <div class="timeline-item">
@@ -903,7 +987,7 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div class="section" id="capabilities">
                 <h2 class="section-title">Technical Capabilities</h2>
                 <div class="specs-grid">
                     <div class="spec-item">
@@ -976,7 +1060,7 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div class="section" id="submit-idea">
                 <div class="idea-form-section">
                     <h2>💡 What Would YOU Create?</h2>
                     <p class="subtitle">Share your vision for Reachy-mini. Your ideas will shape how we use this technology at Suffolk. Every perspective matters—students, faculty, staff, and industry partners welcome.</p>
@@ -1053,7 +1137,7 @@
                 </div>
             </div>
 
-            <div class="section community-ideas">
+            <div class="section community-ideas" id="community-ideas">
                 <h2 class="section-title">💭 Community Ideas</h2>
                 <p class="intro-text" style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
                     See what others are thinking! These ideas from the Suffolk community are sparking conversations and inspiring new possibilities. <strong>Your idea could be next!</strong>
@@ -1233,9 +1317,31 @@
             googleFormLink2.addEventListener('click', function(e) {
                 e.preventDefault();
                 // Scroll to form
-                document.getElementById('ideaForm').scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('submit-idea').scrollIntoView({ behavior: 'smooth' });
             });
         }
+
+        // Navigation menu active state on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
